@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "kjsieit-canteen"
+  },
+  "targets": {
+    "kjsieit-canteen": {
+      "hosting": {
+        "admin": [
+          "admin-kjsieit-canteen"
+        ]
+      }
+    }
+  }
+}
