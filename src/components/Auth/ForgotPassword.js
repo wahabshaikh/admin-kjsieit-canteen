@@ -26,7 +26,7 @@ const ForgotPassword = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState(null);
+  const [, setErrors] = useState(null);
 
   const { login } = useAuth();
   const history = useHistory();
