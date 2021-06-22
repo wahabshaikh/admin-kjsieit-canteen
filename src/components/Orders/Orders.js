@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { db } from "../../firebase";
 import Order from "./Order";
 import {
+  Button,
   InputAdornment,
+  Modal,
   Paper,
   Table,
   TableBody,
@@ -36,6 +38,15 @@ const Orders = () => {
       color: colors.palette.primary.main,
     },
   ]);
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   useEffect(() => {
     const unsubscribe = db.collection("orders").onSnapshot((snapshot) => {
@@ -99,33 +110,60 @@ const Orders = () => {
     setPage(0);
   };
 
+  const body = (
+    <div
+      style={{
+        top: "50%",
+        left: "50%",
+        position: "absolute",
+        backgroundColor: "white",
+        transform: "translate(-50%, -50%)",
+        padding: 5,
+      }}
+    >
+      <DateRangePicker
+        onChange={(item) => {
+          setDateRange([item.selection]);
+        }}
+        maxDate={new Date()}
+        color={colors.palette.primary.main}
+        rangeColors={[colors.palette.primary.main]}
+        ranges={dateRange}
+      />
+    </div>
+  );
+
   return (
     <div>
       <Toolbar style={{ justifyContent: "space-between" }}>
         <Typography variant="h4" color="textSecondary">
           Orders
         </Typography>
-        <DateRangePicker
-          onChange={(item) => {
-            setDateRange([item.selection]);
-          }}
-          maxDate={new Date()}
-          color={colors.palette.primary.main}
-          rangeColors={[colors.palette.primary.main]}
-          ranges={dateRange}
-        />
-        <TextField
-          size="small"
-          variant="outlined"
-          onChange={(e) => setQuery(e.target.value)}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon color="primary" />
-              </InputAdornment>
-            ),
-          }}
-        />
+        <div>
+          <Button
+            onClick={handleOpen}
+            variant="contained"
+            color="primary"
+            style={{ marginRight: 10 }}
+          >
+            Calendar
+          </Button>
+          <Modal open={open} onClose={handleClose}>
+            {body}
+          </Modal>
+          <TextField
+            size="small"
+            variant="outlined"
+            onChange={(e) => setQuery(e.target.value)}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon color="primary" />
+                </InputAdornment>
+              ),
+            }}
+          />
+        </div>
       </Toolbar>
       <TableContainer component={Paper}>
         <Table>
