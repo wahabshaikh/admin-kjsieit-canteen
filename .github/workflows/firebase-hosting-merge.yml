@@ -26,4 +26,3 @@ jobs:
           expires: 1d
           channelId: "${{ github.event.number }}"
           projectId: kjsieit-canteen
-          target: admin
