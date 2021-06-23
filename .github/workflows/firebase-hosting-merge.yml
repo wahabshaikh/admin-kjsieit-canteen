@@ -24,5 +24,6 @@ jobs:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_KJSIEIT_CANTEEN_WEBSITE }}"
           expires: 1d
+          channelId: "${{ github.event.number }}"
           projectId: kjsieit-canteen
           target: admin
