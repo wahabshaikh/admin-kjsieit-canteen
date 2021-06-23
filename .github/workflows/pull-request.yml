@@ -22,3 +22,4 @@ jobs:
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_KJSIEIT_CANTEEN_WEBSITE }}"
           projectId: kjsieit-canteen
           channelId: 'pr-${{ github.event.number }}-${{ github.event.pull_request.head.ref }}'
+          expires: 3d
