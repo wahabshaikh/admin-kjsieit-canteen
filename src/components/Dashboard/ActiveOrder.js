@@ -32,9 +32,27 @@ const ActiveOrder = ({ activeOrder }) => {
 
   const acceptOrder = (id) => {
     if (window.confirm("Accept order?")) {
-      db.collection("active_orders").doc(id).update({
-        status: "processing",
-      });
+      const tokenRef = db.collection("utils").doc("token");
+      const activeOrderRef = db.collection("active_orders").doc(id);
+
+      db.runTransaction((transaction) => {
+        return transaction
+          .get(tokenRef)
+          .then((doc) => {
+            const { token_no } = doc.data();
+            const newTokenValue = token_no + 1;
+
+            transaction.update(tokenRef, { token_no: newTokenValue });
+
+            transaction.update(activeOrderRef, {
+              status: "processing",
+              token_no: newTokenValue,
+            });
+          })
+          .catch((error) =>
+            console.error("Failed to deliver the order", error)
+          );
+      }).catch((error) => console.error("Failed to deliver the order", error));
     }
   };
 

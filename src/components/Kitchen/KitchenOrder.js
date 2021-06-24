@@ -22,7 +22,7 @@ import { db } from "../../firebase";
 import firebase from "firebase";
 
 const KitchenOrder = ({ activeOrder }) => {
-  const { id, placed_at, bill, items, username } = activeOrder;
+  const { id, placed_at, bill, items, token_no } = activeOrder;
   const [checked, setChecked] = React.useState([]);
 
   const handleToggle = (value) => () => {
@@ -73,7 +73,7 @@ const KitchenOrder = ({ activeOrder }) => {
       <Card>
         <CardHeader
           style={{ backgroundColor: "rgba(234,139,38,0.85)" }}
-          title={`#${id.slice(0, 5)}-${username.slice(0, 10)}`}
+          title={`#${token_no}`}
           subheader={placed_at}
         />
         <CardContent>
