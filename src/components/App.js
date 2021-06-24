@@ -4,6 +4,7 @@ import { Container } from "@material-ui/core";
 
 import Navigation from "./Navigation";
 import Dashboard from "./Dashboard/Dashboard";
+import KitchenDashboard from "./Kitchen/Dashboard";
 import ListMenuItems from "./Menu/ListMenuItems";
 import AddMenuItem from "./Menu/AddMenuItem";
 import Orders from "./Orders/Orders";
@@ -25,6 +26,7 @@ const App = () => {
             <Route path="/forgot-password" component={ForgotPassword} />
 
             <PrivateRoute exact path="/" component={Dashboard} />
+            <PrivateRoute exact path="/kitchen" component={KitchenDashboard} />
             <PrivateRoute exact path="/menu" component={ListMenuItems} />
             <PrivateRoute path="/menu/add" component={AddMenuItem} />
             <PrivateRoute path="/orders" component={Orders} />

@@ -14,6 +14,7 @@ import Typography from "@material-ui/core/Typography";
 import LogoutIcon from "@material-ui/icons/ExitToApp";
 import MenuIcon from "@material-ui/icons/Menu";
 import DashboardIcon from "@material-ui/icons/Dashboard";
+import KitchenIcon from "@material-ui/icons/Kitchen";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 import RestaurantMenuIcon from "@material-ui/icons/RestaurantMenu";
 import AssessmentIcon from "@material-ui/icons/Assessment";
@@ -48,6 +49,11 @@ const Navigation = () => {
       text: "Dashboard",
       icon: <DashboardIcon />,
       link: "/",
+    },
+    {
+      text: "Dashboard - Kitchen", // TODO: Dashboard for kitchen role and this for admin role. Implement after you have integrated role of user
+      icon: <KitchenIcon />,
+      link: "/kitchen",
     },
     {
       text: "Menu",
