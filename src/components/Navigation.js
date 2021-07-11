@@ -101,11 +101,11 @@ const Navigation = () => {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {listItems.map((listItem, index) => {
+        {listItems.map((listItem) => {
           const { text, icon, link } = listItem;
           return (
-            <React.Fragment key={index}>
-              {index !== 5 ? (
+            <React.Fragment key={listItem.text}>
+              {listItem.text !== "Log Out" ? (
                 <ListItem button component={Link} to={link}>
                   <ListItemIcon>{icon}</ListItemIcon>
                   <ListItemText>{text}</ListItemText>
