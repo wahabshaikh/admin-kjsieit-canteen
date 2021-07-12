@@ -10,7 +10,6 @@ import {
 } from "@material-ui/core";
 import red from "@material-ui/core/colors/red";
 import { db, storage } from "../firebase";
-import validate from "../utils/validate";
 
 const useStyles = makeStyles((theme) => ({
   root: {
