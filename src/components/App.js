@@ -14,6 +14,7 @@ import Login from "./Auth/Login";
 import { AuthProvider } from "../contexts/AuthContext";
 import PrivateRoute from "./PrivateRoute";
 import ForgotPassword from "./Auth/ForgotPassword";
+import Categories from "./Categories";
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
             <PrivateRoute exact path="/kitchen" component={KitchenDashboard} />
             <PrivateRoute exact path="/menu" component={ListMenuItems} />
             <PrivateRoute path="/menu/add" component={AddMenuItem} />
+            <PrivateRoute path="/categories" component={Categories} />
             <PrivateRoute path="/orders" component={Orders} />
             <PrivateRoute path="/reports" component={Reports} />
             <PrivateRoute path="/users" component={Users} />

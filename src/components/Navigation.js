@@ -19,6 +19,7 @@ import MenuBookIcon from "@material-ui/icons/MenuBook";
 import RestaurantMenuIcon from "@material-ui/icons/RestaurantMenu";
 import AssessmentIcon from "@material-ui/icons/Assessment";
 import GroupIcon from "@material-ui/icons/Group";
+import CategoryIcon from "@material-ui/icons/Category";
 import { useAuth } from "../contexts/AuthContext";
 
 const useStyles = makeStyles((theme) => ({
@@ -59,6 +60,11 @@ const Navigation = () => {
       text: "Menu",
       icon: <MenuBookIcon />,
       link: "/menu",
+    },
+    {
+      text: "Categories",
+      icon: <CategoryIcon />,
+      link: "/categories",
     },
     {
       text: "Reports",

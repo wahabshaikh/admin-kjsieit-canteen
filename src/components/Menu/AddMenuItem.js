@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link as RouterLink, useHistory } from "react-router-dom";
 import { db, storage } from "../../firebase";
-import validateMenuItem from "./validateMenuItem";
+import validate from "../../utils/validate";
 
 import {
   Breadcrumbs,
@@ -87,7 +87,7 @@ const AddMenuItem = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const errors = validateMenuItem(menuItem);
+    const errors = validate(menuItem);
     if (Object.keys(errors).length === 0) {
       const name = menuItem.name.toLowerCase().replace(" ", "_");
       storage

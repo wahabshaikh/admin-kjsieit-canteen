@@ -1,4 +1,4 @@
-export default function validateLogin(values) {
+export default function validate(values) {
   let errors = {};
 
   // Name Errors
