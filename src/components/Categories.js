@@ -50,7 +50,13 @@ const Categories = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const errors = validate({ name: categoryName });
+    let errors = {};
+    if (!categoryName) {
+      errors.categoryName = "Category name required";
+    } else if (categoryName.length < 3) {
+      errors.categoryName = "Category name must be atleast 3 characters";
+    }
+
     if (Object.keys(errors).length === 0) {
       const name = categoryName.toLowerCase().replace(" ", "_");
       storage
