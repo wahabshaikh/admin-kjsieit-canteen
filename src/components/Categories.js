@@ -120,7 +120,7 @@ const Categories = () => {
 
       <List>
         {categories.map((category) => (
-          <ListItem>
+          <ListItem key={category.name}>
             <ListItemText primary={category.name} />
           </ListItem>
         ))}
