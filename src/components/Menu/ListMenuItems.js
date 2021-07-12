@@ -157,6 +157,7 @@ const ListMenuItems = () => {
             </Fab>
           </Tooltip>
         </div>
+
         <TextField
           size="small"
           variant="outlined"
@@ -177,6 +178,7 @@ const ListMenuItems = () => {
             <TableRow>
               <TableCell>Name</TableCell>
               <TableCell>Price</TableCell>
+              <TableCell>Estimated Time</TableCell>
               <TableCell>Category</TableCell>
               <TableCell>Availability</TableCell>
               <TableCell></TableCell>
@@ -202,6 +204,23 @@ const ListMenuItems = () => {
                       </form>
                     ) : (
                       <span>&#x20B9; {menuItem.price}</span>
+                    )}
+                  </TableCell>
+
+                  <TableCell>
+                    {editing && menuItem.id === currentItem.id ? (
+                      <form onSubmit={handleSubmit}>
+                        <TextField
+                          name="estimated_time"
+                          onChange={handleChange}
+                          type="number"
+                          value={currentItem.estimated_time}
+                          variant="outlined"
+                          required
+                        />
+                      </form>
+                    ) : (
+                      <span>{menuItem.estimated_time} mins</span>
                     )}
                   </TableCell>
 

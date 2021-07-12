@@ -15,7 +15,14 @@ export default function validateLogin(values) {
     errors.price = "Price must be greater than 0";
   }
 
-  // Price Errors
+  // Estmated Time Errors
+  if (!values.estimated_time) {
+    errors.estimated_time = "Estimated time required";
+  } else if (Number(values.estimated_time) <= 0) {
+    errors.estimated_time = "Estimated time must be greater than 0";
+  }
+
+  // Category Errors
   if (!values.category) {
     errors.category = "Category required";
   }

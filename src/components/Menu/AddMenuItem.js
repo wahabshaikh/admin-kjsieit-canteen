@@ -40,6 +40,7 @@ const AddMenuItem = () => {
     name: "",
     image_url: "",
     price: "",
+    estimated_time: "",
     category: "",
     isAvailable: true,
   });
@@ -67,6 +68,11 @@ const AddMenuItem = () => {
       setMenuItem((previousMenuItems) => ({
         ...previousMenuItems,
         price: Number(e.target.value),
+      }));
+    } else if (e.target.name === "estimated_time") {
+      setMenuItem((previousMenuItems) => ({
+        ...previousMenuItems,
+        estimated_time: Number(e.target.value),
       }));
     } else if (e.target.name === "image") {
       setImage(e.target.files[0]);
@@ -97,6 +103,7 @@ const AddMenuItem = () => {
                   name: "",
                   image_url: "",
                   price: "",
+                  estimated_time: "",
                   category: "",
                   isAvailable: true,
                 });
@@ -163,6 +170,24 @@ const AddMenuItem = () => {
         />
         {errors.price && (
           <Typography className={classes.errorText}>{errors.price}</Typography>
+        )}
+
+        <TextField
+          className={classes.input}
+          error={isError && errors.price}
+          fullWidth
+          label="Estimated Time (in minutes)"
+          name="estimated_time"
+          onChange={handleChange}
+          type="number"
+          value={menuItem.estimated_time}
+          variant="outlined"
+          required
+        />
+        {errors.estimated_time && (
+          <Typography className={classes.errorText}>
+            {errors.estimated_time}
+          </Typography>
         )}
 
         <FormControl
