@@ -57,7 +57,7 @@ const Categories = () => {
     }
 
     if (Object.keys(errors).length === 0) {
-      const name = categoryName.toLowerCase().replace(" ", "_");
+      const name = categoryName.toLowerCase();
       storage
         .ref(`/categories/${name}`)
         .put(image)
