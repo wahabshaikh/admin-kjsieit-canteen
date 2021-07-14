@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   makeStyles,
   Typography,
@@ -32,6 +32,8 @@ const Categories = () => {
   const [image, setImage] = useState("");
   const [isError, setIsError] = useState(false);
   const [errors, setErrors] = useState({});
+
+  const imageRef = useRef(null);
 
   const [categories, setCategories] = useState([]);
   useEffect(() => {
@@ -70,6 +72,7 @@ const Categories = () => {
               })
               .then(() => {
                 setCategoryName("");
+                imageRef.current.value = "";
               })
               .catch((error) => setErrors({ firebase: error.message }));
           });
@@ -102,6 +105,7 @@ const Categories = () => {
         <TextField
           name="image"
           type="file"
+          inputRef={imageRef}
           onChange={(e) => setImage(e.target.files[0])}
           variant="outlined"
           defaultValue=""
